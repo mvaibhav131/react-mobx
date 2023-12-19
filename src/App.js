@@ -1,28 +1,18 @@
 import './App.css';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import UserModule from './Components/userModule';
-import { makeAutoObservable } from 'mobx';
-
-export class UserModalViewStore {
-  opened = false;
-  constructor() {
-    makeAutoObservable(this,undefined,{autoBind:true});
-  }
-  open() {
-    this.opened= true;
-  }
-  close(){
-    this.opened=false;
-  }
-}
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { UserStoreProvider } from './store/userStore';
+import AddUser from './Components/addUser';
+import UserList from './Components/userList';
 
 function App() {
   return (
    <BrowserRouter>
+   <UserStoreProvider>
    <Routes>
-    <Route path='/users/*' element={<UserModule/>}/>
-    <Route path='/' element={<Link to="/users" >Go to the Users</Link>} />
+    <Route path='/' element={<AddUser/>}/>
+    <Route path='/users' element={<UserList/>} />
    </Routes>
+   </UserStoreProvider>
    </BrowserRouter>
   );
 }
