@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 const UserList = observer(() => {
   const userStore = useUserStore();
   const storedData = JSON.parse(localStorage.getItem('users'));
-
   const handleDeleteUser = (index) => {
     userStore.deleteUser(index); 
   };
