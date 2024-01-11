@@ -18,7 +18,7 @@ const AddUser = observer(() => {
                 localStorage.setItem('users', JSON.stringify(userStore.users));
                 navigate("/users");
             }
-        }
+        };
     
         return (
             <div className="form-container" >
